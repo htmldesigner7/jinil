@@ -24,9 +24,8 @@ input:focus {
 }
 
 .hnow_footer {
-    background: url('../images/ft_bg.png') center/cover no-repeat,
-        #EDEAE4;
-    padding: 40px 0;
+    /* padding: 40px 0; */
+    border: 1px solid #A2B9CF;
 }
 
 .ft_newsletter {
@@ -75,8 +74,10 @@ input:focus {
     line-height: 28px;
 }
 
-.ft_middle {
-    margin-top: 40px;
+.ft_top {
+    /* margin-top: 40px; */
+    border: 1px solid #A2B9CF;
+
 }
 
 .ft_head {

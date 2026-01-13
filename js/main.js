@@ -79,4 +79,40 @@ $(document).ready(function () {
   window.addEventListener('resize', debounce(updateHeaderHeight, 150));
 })();
 
+// ================= COUNTERS (animate when visible) =================
+(function () {
+  const counterSection = document.querySelector('.counter');
+  if (!counterSection) return;
+
+  const counters = counterSection.querySelectorAll('.count');
+  let started = false;
+
+  function animateCounter(el, target, duration = 2000) {
+    const startTime = performance.now();
+
+    function step(now) {
+      const progress = Math.min((now - startTime) / duration, 1);
+      el.textContent = Math.floor(progress * target);
+      if (progress < 1) requestAnimationFrame(step);
+      else el.textContent = target;
+    }
+
+    requestAnimationFrame(step);
+  }
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !started) {
+        started = true;
+        counters.forEach(el => {
+          const t = parseInt(el.getAttribute('data-target'), 10);
+          if (Number.isFinite(t)) animateCounter(el, t, 2000);
+        });
+        obs.unobserve(counterSection);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  observer.observe(counterSection);
+})();
 

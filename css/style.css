@@ -174,3 +174,11 @@ a {
   z-index: 2;
 }
 
+
+.com_btn_2
+{
+  color: var(--blue);
+  border: 1px solid var(--blue);
+  padding: 12px 54px;
+}
+

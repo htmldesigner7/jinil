@@ -49,6 +49,10 @@
   text-align: center;
 }
 
+.sec_hed_top p {
+  font-size: 18px;
+}
+
 .fea_mac_img {
   border: 1px solid #a2b9cf;
   position: relative;
@@ -101,9 +105,181 @@
   text-wrap: nowrap;
 }
 
-.fea_mac_content hr
-{
-  color: #7A8F9B;
+.fea_mac_content hr {
+  color: #7a8f9b;
   margin-top: 20px;
   margin-bottom: 24px;
+}
+
+/* Counter Section Styles */
+.counter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.counter_item {
+  text-align: center;
+}
+
+.counter_item img {
+  margin-bottom: 40px;
+  mix-blend-mode: multiply;
+}
+
+/* Industry Section Styles */
+.industry_section {
+  background: radial-gradient(
+    561% 75% at 56% 52%,
+    #1f3566 0%,
+    #243f7a 50%,
+    #1c2f5a 100%
+  );
+  padding: 100px 0;
+}
+
+.industry_grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 35px;
+}
+
+.industry_item_wrapper {
+  border: 1px solid #5d89e6;
+  height: 330px;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.industry_item {
+  background-position-x: center;
+  background-position-y: center;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+  mix-blend-mode: lighten;
+  position: relative;
+
+  /* Smooth animations */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  will-change: height, transform;
+  transition: height 0.6s cubic-bezier(0.22, 0.9, 0.12, 1),
+    transform 0.6s cubic-bezier(0.22, 0.9, 0.12, 1);
+}
+
+.industry_item::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #233d77;
+  opacity: 0.8;
+  transition: opacity 0.6s cubic-bezier(0.22, 0.9, 0.12, 1), filter 0.6s ease;
+  will-change: opacity, filter;
+}
+
+.industry_item_wrapper .title_24 {
+  width: 100%;
+  color: var(--white);
+  text-align: center;
+  font-size: 42px;
+  font-weight: 500;
+  line-height: 44px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  transition: transform 0.6s cubic-bezier(0.22, 0.9, 0.12, 1),
+    font-size 0.4s ease, line-height 0.4s ease;
+  will-change: transform, font-size, line-height;
+}
+
+.industry_item_wrapper:hover .industry_item {
+  height: 85%;
+  transform: translateY(-6px);
+}
+
+.industry_item_wrapper:hover .industry_item::after {
+  opacity: 0;
+}
+
+.industry_item_wrapper:hover .title_24 {
+  top: 80%;
+  transform: translate(-50%, 50%);
+  font-size: 24px;
+  line-height: 28px;
+}
+
+/* Process Steps Section Styles */
+
+.process_item {
+  border: 1px solid #a2b9cf;
+  background: #e4ecf4;
+  padding: 72px 48px;
+  position: relative;
+  text-align: center;
+}
+
+.process_item_step {
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 55px;
+  border-radius: 100px;
+  border: 1px solid #a2b9cf;
+  background: #f5f8fb;
+  color: var(
+  --black-111);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.process_item_icon
+{
+  margin-bottom: 24px;
+}
+
+.process_item_icon path {
+  stroke: #105293;
+  stroke-dasharray: 300;
+  stroke-dashoffset: 300;
+  animation: draw 6s linear infinite;
+  fill-opacity: 0;
+  transition: stroke-dashoffset .2s ease, fill-opacity .2s ease;
+}
+
+@keyframes draw {
+  0%   { stroke-dashoffset: 300; fill-opacity: 0; }
+  60%  { stroke-dashoffset: 0;   fill-opacity: 1; }
+  100% { stroke-dashoffset: 300; fill-opacity: 0; }
+}
+
+/* === HOVER PAR FULL SVG VISIBLE === */
+.process_item:hover .process_item_icon path {
+  animation-play-state: paused;  /* animation stop */
+  stroke-dashoffset: 0 !important; /* full path show */
+  fill-opacity: 1 !important;     /* fill visible */
+}
+
+
+
+/* Insights Section Styles */
+
+.insights_wrapper
+{
+  margin-top: 40px;
+}
+
+.insight_item_content hr
+{
+  color: #7A8F9B;
+  margin: 24px 0;
 }

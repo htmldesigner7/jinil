@@ -1,6 +1,6 @@
  <footer class="hnow_footer">
-     <div class="container">
-         <div class="ft_middle">
+     <div class="container-fluid">
+         <div class="ft_top">
              <div class="ft_center_wrapper">
                  <div class="ft_center_box">
                      <div>
@@ -66,7 +66,7 @@
 
          </div>
          <div class="ft_bottom">
-             <div class="ym_cpy" style="color:#B58A46;">
+             <div class="ym_cpy" >
                  All rights reserved. ©HNOWW <?php echo date("Y"); ?>. Designed in Dubai.
              </div>
 
