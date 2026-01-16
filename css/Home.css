@@ -1,24 +1,23 @@
 /* ------------------------------------- animatin hero section csss ----------------------- */
 
 .sequence_section {
-  /* position: fixed; */
-  /* top: 0;
-  left: 0;
-  width: 100%; */
-  position: relative;
+  position: sticky;
+  top: 0;
+  /* height: 100vh; */
+  width: 100%;
   overflow: hidden;
+  background: radial-gradient(
+    561.33% 75.38% at 56.26% 52.09%,
+    #1f3566 0%,
+    #243f7a 50%,
+    #1c2f5a 100%
+  );
 }
 
 #image_sequence {
   width: 100%;
   height: auto;
   display: block;
-  background-color: radial-gradient(
-    561.33% 75.38% at 56.26% 52.09%,
-    #1f3566 0%,
-    #243f7a 50%,
-    #1c2f5a 100%
-  );
 }
 
 .hero_text {
@@ -45,6 +44,18 @@
   line-height: 24px;
 }
 
+.after_sequence {
+  height: 70vh;
+  margin-top: -35em;
+  margin-bottom: 100px;
+  overflow: hidden;
+  background: white;
+  position: relative;
+  z-index: 3;
+  text-align: center;
+}
+
+/* ------------------------------------- */
 .sec_hed_top {
   text-align: center;
 }
@@ -235,15 +246,13 @@
   border-radius: 100px;
   border: 1px solid #a2b9cf;
   background: #f5f8fb;
-  color: var(
-  --black-111);
+  color: var(--black-111);
   font-size: 14px;
   font-weight: 400;
   line-height: 24px;
 }
 
-.process_item_icon
-{
+.process_item_icon {
   margin-bottom: 24px;
 }
 
@@ -253,33 +262,38 @@
   stroke-dashoffset: 300;
   animation: draw 6s linear infinite;
   fill-opacity: 0;
-  transition: stroke-dashoffset .2s ease, fill-opacity .2s ease;
+  transition: stroke-dashoffset 0.2s ease, fill-opacity 0.2s ease;
 }
 
 @keyframes draw {
-  0%   { stroke-dashoffset: 300; fill-opacity: 0; }
-  60%  { stroke-dashoffset: 0;   fill-opacity: 1; }
-  100% { stroke-dashoffset: 300; fill-opacity: 0; }
+  0% {
+    stroke-dashoffset: 300;
+    fill-opacity: 0;
+  }
+  60% {
+    stroke-dashoffset: 0;
+    fill-opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 300;
+    fill-opacity: 0;
+  }
 }
 
 /* === HOVER PAR FULL SVG VISIBLE === */
 .process_item:hover .process_item_icon path {
-  animation-play-state: paused;  /* animation stop */
+  animation-play-state: paused; /* animation stop */
   stroke-dashoffset: 0 !important; /* full path show */
-  fill-opacity: 1 !important;     /* fill visible */
+  fill-opacity: 1 !important; /* fill visible */
 }
-
-
 
 /* Insights Section Styles */
 
-.insights_wrapper
-{
+.insights_wrapper {
   margin-top: 40px;
 }
 
-.insight_item_content hr
-{
-  color: #7A8F9B;
+.insight_item_content hr {
+  color: #7a8f9b;
   margin: 24px 0;
 }

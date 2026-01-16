@@ -1,36 +1,25 @@
-//    HERO IMAGE SEQUENCE ANIMATION WITH SCROLLTRIGGER AND SCROLLSMOOTHER
-
 gsap.registerPlugin(ScrollTrigger);
 
-// hero text animations
+// add extra scroll space after sequence section
+const spacer = document.createElement("div");
+spacer.style.height = "200vh"; // adjust for timing
+document.querySelector(".sequence_section").after(spacer);
 
+// hero title animation
 gsap.from("#hero-title", {
   scrollTrigger: {
     trigger: ".sequence_section",
     start: "top top",
-    end: "bottom center",
+    end: "+=1500",
     scrub: true,
   },
   opacity: 0,
-  y: 100,
-  ease: "power3.out",
+  y: 120,
 });
 
-gsap.from(".subtitle", {
-  scrollTrigger: {
-    trigger: ".sequence_section",
-    start: "top center",
-    end: "bottom center",
-    scrub: true,
-  },
-  opacity: 0,
-  y: 50,
-  scale: 0.8,
-  ease: "power3.out",
-});
+// subtitle = no animation (static)
 
 const frameCount = 142;
-
 const urls = Array.from(
   { length: frameCount },
   (_, i) => `images/hero/parallax_${(i + 1).toString().padStart(4, "0")}.jpg`
@@ -42,9 +31,8 @@ imageSequence({
   scrollTrigger: {
     trigger: ".sequence_section",
     start: "top top",
-    end: "+=2000", // 🔥 scroll distance for animation
+    end: "+=2000",
     scrub: true,
-    pin: true, // 🔥 THIS IS THE MAGIC
   },
 });
 
@@ -55,12 +43,11 @@ function imageSequence(config) {
   let curFrame = -1;
 
   function updateImage() {
-    let frame = Math.round(playhead.frame);
-    frame = Math.max(0, Math.min(frame, images.length - 1));
-
-    if (frame !== curFrame) {
-      imgElement.src = images[frame].src;
-      curFrame = frame;
+    let f = Math.round(playhead.frame);
+    f = Math.max(0, Math.min(f, images.length - 1));
+    if (f !== curFrame) {
+      imgElement.src = images[f].src;
+      curFrame = f;
     }
   }
 
@@ -71,11 +58,10 @@ function imageSequence(config) {
     images.push(img);
   });
 
-  return gsap.to(playhead, {
+  gsap.to(playhead, {
     frame: images.length - 1,
     ease: "none",
     onUpdate: updateImage,
     scrollTrigger: config.scrollTrigger,
   });
 }
-
